@@ -1258,7 +1258,7 @@
 				display: none;
 			}
 
-			.poptrox-popup .caption {
+			.poptrox-popup .caption p{
 				display: none !important;
 			}
 

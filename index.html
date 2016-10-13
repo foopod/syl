@@ -85,7 +85,7 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
 		<!-- Scripts -->
         
 			<script src="assets/js/jquery.min.js"></script>
-        
+            <script src="assets/js/jGFeed.js"></script>
 			<script src="assets/js/jquery.poptrox.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
@@ -93,30 +93,25 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
         
 			<script src="assets/js/main.js"></script>
         <script type="text/javascript">
-				$.ajax({
-                    url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D\'http%3A%2F%2Fbackend.deviantart.com%2Frss.xml%3Ftype%3Ddeviation%26q%3Dby%253Aastral-haze%2Bsort%253Atime%2Bmeta%253Aall\'%20LIMIT%2020&format=json',
-                            method:'get',
-							dataType:'jsonp',
-							success: function(data){
-									//var objectPosts = data.response.posts;
-                                    //console.log(data);
-                                var objectPosts = data.query.results;
-                                //console.log(objectPosts);
-									$.each(objectPosts, function(key, value){
-											$.each(value, function(k, v){
-                                                console.log(v);
-                                                if(v.content){
-                                                    $('#main').append(
-															//'<article class="item thumb" data-width="242"><a href="'+v.content.url+'" class="image"><img src="'+v.content.url+'" alt=""></a></article>'
-                                                        '<article class="thumb"><a href="'+v.content.url+'" class="image"><img src="'+v.content.url+'" alt=""/></a><h2>'+v.title[0]+'</h2><p>'+v.description[0].content+'</p></article>'
-													);
-                                                }
-													
-											});
-									});
-                                init();
-							}
-				});
+            $.jGFeed('http://backend.deviantart.com/rss.xml?q=gallery%3AAstral-Haze%2F127863&type=deviation',
+                  function(feeds){
+                    // Check for errors
+                    if(!feeds){
+                      // there was an error
+                      return false;
+                    }
+                    // do whatever you want with feeds here
+                    for(var i=0; i<feeds.entries.length; i++){
+                      var entry = feeds.entries[i];
+                      // Entry title
+                        if(entry.content){
+                                    $('#main').append(
+                                        '<article class="thumb"><a href="'+entry.mediaGroups[0].contents[0].url+'" class="image"><img src="'+entry.mediaGroups[0].contents[0].url+'" alt=""/></a><h2>'+entry.title+'</h2><p>'+entry.mediaGroups[0].contents[0].description+'</p></article>'
+                                    );
+                                }
+                    }
+                    init();
+                  }, 20);
 			</script>
             
 	</body>
