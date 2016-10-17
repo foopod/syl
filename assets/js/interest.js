@@ -12,6 +12,7 @@ function GET(variable)
 
 function init(){
     var title = decodeURI(GET('title'));
+    var found = false;
     if(title.length > 2){
          $.jGFeed('http://backend.deviantart.com/rss.xml?q=gallery%3AAstral-Haze%2F127863&type=deviation',
               function(feeds){
@@ -26,6 +27,7 @@ function init(){
                   // Entry title
                     if(entry.content){
                         if(entry.title.includes(title)){
+                            found = true;
                             $('#interestForm').addClass(entry.title);
                             $('#content').append(
                                         '<h2>'+entry.title+'</h2><img width="400px" src="'+entry.mediaGroups[0].contents[0].url+'" alt="'+entry.title+'"/><p>'+entry.mediaGroups[0].contents[0].description+'</p></div>'
@@ -35,5 +37,8 @@ function init(){
                 }
               }, 20);
     }
+    if(found != true){
+        window.location.replace("http://astral-haze.site");
     }
+}
 init();
