@@ -1994,3 +1994,25 @@
 		#footer .copyright a {
 			color: inherit;
 		}
+
+
+.submit {
+    width: 10em;
+    background-color: white;
+    float: right;
+    color: black;
+    padding: 8px 12px;
+    text-align: center;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    display: inline;
+}
+
+.submit:hover{
+    background-color: dimgray;
+    color: white !important;
+}

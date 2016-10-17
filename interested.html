@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KWGD66');</script>
+        <!-- End Google Tag Manager -->
+        <style>
+            #interestForm{
+                width: 40%;
+                display: inline;
+            }
+            #content{
+                text-align: center;
+            }
+            section{
+                padding: 20px;
+                max-width: 40em;
+                margin: auto;
+            }
+            p{
+                max-width: 40em;
+                margin: auto;
+            }
+            h2{
+                font-size:  25px;
+            }
+        </style>
+    </head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWGD66"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="content"></div>
+    <div id="interestForm">
+        <section>
+            <h2>Show your interest</h2>
+            <form id="interestForm" method="post" action="https://formspree.io/astral-visions@hotmail.com">
+                <div class="field half first">
+                    <input type="text" name="Name" id="name" placeholder="Name" />
+                </div>
+                <div class="field half">
+                    <input type="text" name="Email" id="Email" placeholder="Email" />
+                </div>
+                <div class="field">
+                    <textarea name="Message" id="message" rows="4" placeholder="Message"></textarea>
+                </div>
+                <input type="hidden" name="_next" value="http://astral-haze.site/" />
+                <input type="hidden" name="_subject" value="Someone is interested!" />
+                <ul class="actions">
+                    <li><input type="submit" value="Send" class="special" /></li>
+                    <li><input type="reset" value="Reset" /></li>
+                </ul>
+            </form>
+        </section>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jGFeed.js"></script>
+    <script src="assets/js/interest.js"></script>
+    </body>
+</html>
