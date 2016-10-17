@@ -35,10 +35,11 @@ function init(){
                         }   
                     }
                 }
-              }, 20);
-    }
-    if(found != true){
+             if(found != true){
         window.location.replace("http://astral-haze.site");
     }
+              }, 20);
+    }
+    
 }
 init();
