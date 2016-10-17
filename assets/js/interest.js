@@ -26,10 +26,10 @@ function init(){
                   // Entry title
                     if(entry.content){
                         if(entry.title.includes(title)){
+                            $('#interestForm').addClass(entry.title);
                             $('#content').append(
                                         '<h2>'+entry.title+'</h2><img width="400px" src="'+entry.mediaGroups[0].contents[0].url+'" alt="'+entry.title+'"/><p>'+entry.mediaGroups[0].contents[0].description+'</p></div>'
                                     );
-                            $('#interestForm').addClass(entry.title);
                         }   
                     }
                 }
