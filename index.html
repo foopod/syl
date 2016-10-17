@@ -116,7 +116,7 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
                       // Entry title
                         if(entry.content){
                                     $('#main').append(
-                                        '<article class="thumb"><a href="'+entry.mediaGroups[0].contents[0].url+'" class="image"><img src="'+entry.mediaGroups[0].contents[0].url+'" alt=""/></a><h2>'+entry.title+'</h2><p style="display:inline;">'+entry.mediaGroups[0].contents[0].description+'</p><a id="interested_'+entry.title+'" class="submit" href="interested.html?title='+ encodeURI(entry.title) +'">Interested?</a></article>'
+                                        '<article class="thumb"><a href="'+entry.mediaGroups[0].contents[0].url+'" class="image"><img src="'+entry.mediaGroups[0].contents[0].url+'" alt=""/></a><h2>'+entry.title+'</h2><p style="display:inline;">'+entry.mediaGroups[0].contents[0].description+'</p><a class="submit" href="interested.html?title='+ encodeURI(entry.title) +'">Interested?</a></article>'
                                     );
                                 }
                     }
