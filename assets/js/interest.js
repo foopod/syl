@@ -33,6 +33,7 @@ function init(){
                             $('#content').append(
                                         '<h2>'+entry.title+'</h2><img width="400px" src="'+entry.mediaGroups[0].contents[0].url+'" alt="'+entry.title+'"/><p>'+entry.mediaGroups[0].contents[0].description+'</p></div>'
                                     );
+                            $('#formTitle').val(entry.title);
                         }   
                     }
                 }
