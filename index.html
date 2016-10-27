@@ -24,6 +24,9 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
+         <script>
+            dataLayer = [];
+        </script>
         <!-- Google Tag Manager (noscript) -->
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KWGD66"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -70,7 +73,7 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
 							<div>
 								<section>
 									<h2>Get in touch   </h2>
-									<form method="post" action="https://formspree.io/astral-visions@hotmail.com">
+									<form method="post" action="https://formspree.io/jonathonshields@gmail.com">
 										<div class="field half first">
 											<input type="text" name="Name" id="name" placeholder="Name" required />
 										</div>
@@ -105,7 +108,12 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
         
 			<script src="assets/js/main.js"></script>
         <script type="text/javascript">
-            $.jGFeed('http://backend.deviantart.com/rss.xml?q=gouache+by%3AAstral-Haze&type=deviation',
+            function linkClick(title){
+                    dataLayer.push({"title": title});
+                    dataLayer.push({"event": "interest"});
+                    document.location = "interested.html?title=" + encodeURI(title);
+                }
+            $.jGFeed("http://backend.deviantart.com/rss.xml?q=by%3AAstral-Haze&type=deviation",
                   function(feeds){
                     // Check for errors
                     if(!feeds){
@@ -117,13 +125,12 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
                       var entry = feeds.entries[i];
                       // Entry title
                         if(entry.content){
-                                    $('#main').append(
-                                        '<article class="thumb"><a href="'+entry.mediaGroups[0].contents[0].url+'" class="image"><img src="'+entry.mediaGroups[0].contents[0].url+'" alt=""/></a><h2>'+entry.title+'</h2><p style="display:inline;">'+entry.mediaGroups[0].contents[0].description+'</p><a class="submit" href="interested.html?title='+ encodeURI(entry.title) +'">Interested?</a></article>'
-                                    );
+                                    $("#main").append("<article class='thumb'><a href='"+entry.mediaGroups[0].contents[0].url+"' class='image'><img src='"+entry.mediaGroups[0].contents[0].url+"' /></a><h2>"+entry.title+"</h2><p style='display:inline;'>"+entry.mediaGroups[0].contents[0].description+"</p><a class='submit' onclick=" + "linkClick(\'"+entry.title+"\')"+">Interested?</a></article>");
                                 }
                     }
                     init();
                   }, 16);
+                
 			</script>
             
 	</body>
