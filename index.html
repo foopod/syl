@@ -116,23 +116,45 @@ Because of the infinite scope of this kind of art, his palette is broad and colo
                     dataLayer.push({"event": "interest"});
                     document.location = "interested.html?title=" + encodeURI(title);
                 }
-            $.jGFeed("http://backend.deviantart.com/rss.xml?q=by%3AAstral-Haze&type=deviation",
-                  function(feeds){
-                    // Check for errors
-                    if(!feeds){
-                      // there was an error
-                      return false;
-                    }
-                    // do whatever you want with feeds here
-                    for(var i=0; i<feeds.entries.length; i++){
-                      var entry = feeds.entries[i];
+//                
+//            $.jGFeed("http://backend.deviantart.com/rss.xml?q=by%3AAstral-Haze&type=deviation",
+//                  function(feeds){
+//                    // Check for errors
+//                    if(!feeds){
+//                      // there was an error
+//                      return false;
+//                    }
+//                    // do whatever you want with feeds here
+//                    for(var i=0; i<feeds.entries.length; i++){
+//                      var entry = feeds.entries[i];
+//                      // Entry title
+//                        if(entry.content){
+//                                    $("#main").append("<article class='thumb'><a href='"+entry.mediaGroups[0].contents[0].url+"' class='image'><img src='"+entry.mediaGroups[0].contents[0].url+"' /></a><h2>"+entry.title+"</h2><p style='display:inline;'>"+entry.mediaGroups[0].contents[0].description+"</p><a class='submit' onclick=" + "linkClick(\'"+entry.title+"\')"+">Interested?</a></article>");
+//                                }
+//                    }
+//                    init();
+//                  }, 16);
+//            
+//            
+//            
+            $.ajax({
+                url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%3D'http%3A%2F%2Fbackend.deviantart.com%2Frss.xml%3Fq%3Dby%253AAstral-Haze%26type%3Ddeviation'%20limit%2016&format=json",
+                method:'get',
+                dataType:'jsonp',
+                success: function(data){
+                    var entries = data.query.results.item;
+                    console.log(entries);
+                    for(var i=0; i<entries.length; i++){
+                      var entry = entries[i];
+                        console.log(entries[i]);
                       // Entry title
                         if(entry.content){
-                                    $("#main").append("<article class='thumb'><a href='"+entry.mediaGroups[0].contents[0].url+"' class='image'><img src='"+entry.mediaGroups[0].contents[0].url+"' /></a><h2>"+entry.title+"</h2><p style='display:inline;'>"+entry.mediaGroups[0].contents[0].description+"</p><a class='submit' onclick=" + "linkClick(\'"+entry.title+"\')"+">Interested?</a></article>");
+                                    $("#main").append("<article class='thumb'><a href='"+entry.content.url+"' class='image'><img src='"+entry.content.url+"' /></a><h2>"+entry.title[0]+"</h2><p style='display:inline;'>"+entry.description[0].content+"</p><a class='submit' onclick=" + "linkClick(\'"+encodeURIComponent(entry.title[0])+"\')"+">Interested?</a></article>");
                                 }
-                    }
+                    };
                     init();
-                  }, 16);
+                }
+				});
                 
 			</script>
             

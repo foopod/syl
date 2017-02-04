@@ -142,7 +142,7 @@
 
 			// Hide on click.
 				if (config.hideOnClick) {
-
+                    
 					$this.find('a')
 						.css('-webkit-tap-highlight-color', 'rgba(0,0,0,0)');
 
@@ -273,7 +273,6 @@
 
 			// Event: Toggle.
 				$body.on('click', 'a[href="#' + id + '"]', function(event) {
-
 					event.preventDefault();
 					event.stopPropagation();
 
